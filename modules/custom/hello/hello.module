@@ -1,0 +1,89 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_help().
+ */
+function hello_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+
+    // Main module help for the hello module.
+    case 'help.page.hello':
+      return '<p>'. t('Hello module\'s help page.') . '</p>';
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function hello_cron() {
+  drupal_set_message(t('Hello module cron task done.'), 'warning');
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function hello_user_login($account) {
+  drupal_set_message(t('Welcome dear %name !', ['%name' => $account->getAccountName()]));
+}
+
+/**
+ * Implements hook_node_update().
+ * @param \Drupal\node\NodeInterface $node
+ * @throws Exception
+ */
+function hello_node_update(NodeInterface $node) {
+
+    $user = \Drupal::currentUser();
+    $nid = $node->id();
+    $update_time = $node->getChangedTime();
+    $uid = $user->id();
+
+    $database = \Drupal::database();
+    $database->insert('hello_node_history')
+        ->fields([
+            'nid' => $nid,
+            'update_time' =>$update_time,
+            'uid' => $uid,
+        ])
+        ->execute();
+
+}
+
+/**
+ * Implements hook_node_delete().
+ * @param \Drupal\node\NodeInterface $node
+ */
+function hello_node_delete(NodeInterface $node) {
+
+    $nid = $node->id();
+    $database = \Drupal::database();
+    $database->delete('hello_node_history')
+        ->condition('nid', $nid)
+        ->execute();
+}
+
+function hello_preprocess_block(array &$variables) {
+    $class = \Drupal::config('hello.config')->get('color');
+    $variables['attributes']['class'][] = $class;
+}
+
+function hello_page_attachments(array &$page) {
+    $page['#attached']['library'][] = 'hello/base';
+}
+
+function hello_theme($existing, $type, $theme, $path) {
+    return array(
+        'hello_node_history' => array(
+            'template' => 'hello_node_history',
+            'variables' =>array(
+                'node' => NULL,
+                'count' => NULL,
+            ),
+        ),
+    );
+}
+
+

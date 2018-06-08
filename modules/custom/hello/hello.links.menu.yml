@@ -1,0 +1,14 @@
+hello.page:
+  title: 'Hello!'
+  description: "Hello page"
+  route_name: hello.hello
+  menu_name: main
+  weight: 1
+
+hello.admin_form:
+  title: 'Block Color'
+  description: "Block Color Admin Page"
+  parent: system.themes_page
+  menu_name: admin
+  route_name: hello.admin_form
+  weight: 10

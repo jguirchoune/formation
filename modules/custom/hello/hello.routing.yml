@@ -1,0 +1,58 @@
+hello.hello:
+  path: '/hello/{param}'
+  defaults:
+    _title: 'Hello'
+    _controller: '\Drupal\hello\Controller\HelloController::content'
+    param: null
+  requirements:
+    _access: 'TRUE'
+
+hello.nodelist:
+  path: '/hello/liste-noeuds/{nodetype}'
+  defaults:
+    _title: 'Node list'
+    _controller: '\Drupal\hello\Controller\HelloNodeListController::content'
+    nodetype: null
+  requirements:
+    _access: 'TRUE'
+
+hello.updatehistory:
+  path: '/node/{node}/history'
+  defaults:
+    _title: 'Update history'
+    _controller: '\Drupal\hello\Controller\HelloNodeHistoryController::content'
+  requirements:
+    _access: 'TRUE'
+
+hello.calculator:
+  path: '/hello/calculator'
+  defaults:
+    _title: 'Calculator'
+    _form: '\Drupal\hello\Form\HelloForm'
+  requirements:
+    _permission: 'access hello'
+
+hello.calculator.result:
+  path: '/hello/calculator/result/{result}'
+  defaults:
+    _title: 'Calculator Result'
+    _controller: '\Drupal\hello\Controller\HelloCalculatorController::result'
+    param: ''
+  requirements:
+    _permission: 'access hello'
+
+hello.admin_form:
+  path: '/admin/appearance/block-color'
+  defaults:
+    _title: 'Block Color'
+    _form: '\Drupal\hello\Form\HelloAdminForm'
+  requirements:
+    _permission: 'administer hello'
+
+hello.access:
+  path: '/hello-access'
+  defaults:
+    _controller: '\Drupal\hello\Controller\HelloAccessController::content'
+    _title: 'Hello access'
+  requirements:
+    _access_hello: 'param'

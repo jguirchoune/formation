@@ -1,0 +1,7 @@
+base:
+  version: VERSION
+  css:
+    theme:
+      css/hello.css: {}
+  #js:
+    #js/hello.js: {}
