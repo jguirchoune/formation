@@ -22,7 +22,7 @@ hello.updatehistory:
     _title: 'Update history'
     _controller: '\Drupal\hello\Controller\HelloNodeHistoryController::content'
   requirements:
-    _access: 'TRUE'
+    _access_hello: '48'
 
 hello.calculator:
   path: '/hello/calculator'
@@ -49,10 +49,64 @@ hello.admin_form:
   requirements:
     _permission: 'administer hello'
 
-hello.access:
-  path: '/hello-access'
+api_geo.regions:
+  path: '/regions/{param}'
   defaults:
-    _controller: '\Drupal\hello\Controller\HelloAccessController::content'
-    _title: 'Hello access'
+    _title: 'Regions'
+    _controller: '\Drupal\hello\Controller\APIGeoController::regions'
+    param: ''
   requirements:
-    _access_hello: 'param'
+    _access: 'TRUE'
+
+api_geo.departements:
+  path: '/departements/{param}'
+  defaults:
+    _title: 'Départements'
+    _controller: '\Drupal\hello\Controller\APIGeoController::departements'
+    param: ''
+  requirements:
+    _access: 'TRUE'
+
+api_geo.departements_region:
+  path: '/region/departements/{param}'
+  defaults:
+    _title: 'Départements région'
+    _controller: '\Drupal\hello\Controller\APIGeoController::departementsRegion'
+    param: ''
+  requirements:
+    _access: 'TRUE'
+
+api_geo.communes_region:
+  path: '/region/communes/{param}'
+  defaults:
+    _title: 'Communes région'
+    _controller: '\Drupal\hello\Controller\APIGeoController::communesRegion'
+    param: ''
+  requirements:
+    _access: 'TRUE'
+
+api_geo.communes_departement:
+  path: '/departement/communes/{param}'
+  defaults:
+    _title: 'Communes département'
+    _controller: '\Drupal\hello\Controller\APIGeoController::communesDepartement'
+    param: ''
+  requirements:
+    _access: 'TRUE'
+
+api_geo.communes:
+  path: '/communes/{param}'
+  defaults:
+    _title: 'Communes'
+    _controller: '\Drupal\hello\Controller\APIGeoController::communes'
+    param: ''
+  requirements:
+    _access: 'TRUE'
+
+api_geo.form:
+  path: '/hello/apigeo'
+  defaults:
+    _title: 'API Geo'
+    _form: '\Drupal\hello\Form\APIGeoForm'
+  requirements:
+    _access: 'TRUE'

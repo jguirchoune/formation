@@ -9,7 +9,8 @@
         "drupal/admin_toolbar": "^1.24",
         "drupal/devel": "^1.2",
         "drush/drush": "^9.3",
-        "drupal/console": "^1.8"
+        "drupal/console": "^1.8",
+        "drupal/maillog": "1.x-dev"
     },
     "replace": {
         "drupal/core": "^8.5"

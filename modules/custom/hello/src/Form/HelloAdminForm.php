@@ -52,7 +52,7 @@ class HelloAdminForm extends ConfigFormBase {
 
         $this->config('hello.config')->save();
 
-        $this->entityTypeManager()->getViewBuilder('block')->resetCache();
+        //$this->entityTypeManager()->getViewBuilder('block')->resetCache();
 
         parent::submitForm($form, $form_state);
     }

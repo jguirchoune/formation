@@ -12,3 +12,10 @@ hello.admin_form:
   menu_name: admin
   route_name: hello.admin_form
   weight: 10
+
+api_geo.form:
+  title: 'API Geo'
+  description: "APIGeo"
+  route_name: api_geo.form
+  menu_name: main
+  weight: 10
