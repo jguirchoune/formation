@@ -1,0 +1,25 @@
+
+# Annonce menu items definition
+entity.annonce.collection:
+  title: 'Annonce list'
+  route_name: entity.annonce.collection
+  description: 'List Annonce entities'
+  parent: system.admin_structure
+  weight: 100
+
+annonce.admin.structure.settings:
+  title: 'Annonce settings'
+  description: 'Configure Annonce entities'
+  route_name: annonce.settings
+  parent: system.admin_structure
+
+entity.annonce_tab:
+  title: 'Annonces'
+  route_name: entity.annonce.collection
+  parent: system.admin_content
+
+entity.annonce_menu:
+  title: 'Annonces'
+  route_name: entity.annonce.collection
+  menu_name: main
+  weight: 100

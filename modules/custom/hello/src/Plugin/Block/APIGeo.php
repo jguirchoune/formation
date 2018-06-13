@@ -50,7 +50,7 @@ class APIGeo extends BlockBase {
             $result = curl_exec($ch);
             curl_close($ch);
 
-            ksm($result);
+            //ksm($result);
             //return $result;
         }
         catch (Exception $e) {

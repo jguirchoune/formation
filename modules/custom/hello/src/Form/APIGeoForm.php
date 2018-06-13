@@ -45,6 +45,7 @@ class APIGeoForm extends FormBase {
             '#type' => 'select',
             '#title' => $this->t('Départements'),
             '#options' => $this->departements,
+            //'#style' => 'display:none',
             '#ajax' => array(
                 'callback' => array($this, 'validateTextAjax2'),
                 'event' => 'change',

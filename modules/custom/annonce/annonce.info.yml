@@ -1,0 +1,5 @@
+name: 'Annonce'
+type: module
+description: 'Pour la formation dev avancé'
+core: 8.x
+package: 'POE'
